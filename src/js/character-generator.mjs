@@ -11,7 +11,7 @@ const generateNameButton = document.querySelector("#generateName");
 let systems = [];
 
 async function loadCharacterSystems() {
-  const response = await fetch("/assets/data/character-systems.json");
+  const response = await fetch("/data/character-systems.json");
 
   if (!response.ok) {
     throw new Error("Unable to load character systems.");
