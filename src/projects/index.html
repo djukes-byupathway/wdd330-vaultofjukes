@@ -9,7 +9,7 @@
       content="Vault of Jukes | Upcoming Projects Page shows what is in the hopper for our creative geniuses."
     />
 
-    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="/assets/favicon-DJPgRBtc.ico" />
 
     <title>Upcoming Projects | Vault of Jukes</title>
   </head>
@@ -18,16 +18,33 @@
     <header id="main-header"></header>
 
     <main class="mx-auto max-w-7xl px-6 py-12">
-      <h1 class="text-4xl font-bold text-purple-400">Upcoming Projects</h1>
+      <section class="mb-10">
+        <p
+          class="text-sm font-bold uppercase tracking-[0.25em] text-purple-400"
+        >
+          Inside the Vault
+        </p>
 
-      <p class="mt-4 text-lg text-slate-300">
-        See what is currently being designed, built, painted, and played in the
-        Vault.
-      </p>
+        <h1 class="mt-2 text-4xl font-bold md:text-5xl">Upcoming Projects</h1>
+
+        <p class="mt-4 max-w-2xl text-lg text-slate-300">
+          Take a look at the tools, games, and tabletop projects currently being
+          developed by Vault of Jukes.
+        </p>
+      </section>
+
+      <section>
+        <div id="projectList" class="grid gap-8 lg:grid-cols-2">
+          <p class="text-slate-400">Loading projects...</p>
+        </div>
+      </section>
     </main>
 
-    <footer id="main-footer"></footer>
-
     <script type="module" src="/js/main.js"></script>
+    <script type="module" src="/js/projects.mjs"></script>
+
+    <footer id="main-footer"></footer>
+    <script type="module" src="/js/main.js"></script>
+    <script type="module" src="/js/projects.mjs"></script>
   </body>
 </html>
