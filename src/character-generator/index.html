@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="David Jukes" />
+    <meta
+      name="description"
+      content="Vault of Jukes | Character Generator is a tool to assist players create the character quickly and get playing."
+    />
+
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico" />
+
+    <title>Character Generator | Vault of Jukes</title>
+  </head>
+
+  <body class="min-h-screen bg-slate-950 text-slate-100">
+    <header id="main-header"></header>
+
+    <main class="mx-auto max-w-7xl px-6 py-12">
+      <main class="mx-auto max-w-5xl px-6 py-12">
+        <section class="mb-10">
+          <p
+            class="text-sm font-bold uppercase tracking-[0.25em] text-purple-400"
+          >
+            Character Creation
+          </p>
+
+          <h1 class="mt-2 text-4xl font-bold md:text-5xl">
+            Character Generator
+          </h1>
+
+          <p class="mt-4 max-w-2xl text-lg text-slate-300">
+            Choose your game system and character details, then generate a
+            fantasy name and roll your starting attributes.
+          </p>
+        </section>
+
+        <section
+          class="rounded-xl border border-slate-700 bg-slate-900 p-6 md:p-8"
+        >
+          <form id="character-form">
+            <div class="grid gap-6 md:grid-cols-3">
+              <!-- Game System -->
+              <div>
+                <label for="gameSystem" class="mb-2 block font-semibold">
+                  Game System
+                </label>
+
+                <select
+                  id="gameSystem"
+                  name="gameSystem"
+                  class="w-full rounded-lg border border-slate-600 bg-slate-800 p-3 text-white"
+                  required
+                >
+                  <option value="">Choose a system</option>
+                  <option value="dnd5e">Dungeons & Dragons</option>
+                  <option value="pathfinder2e">Pathfinder</option>
+                  <option value="villains-vigilantes">
+                    Villains & Vigilantes
+                  </option>
+                </select>
+              </div>
+
+              <!-- Race / Ancestry -->
+              <div>
+                <label
+                  id="ancestryLabel"
+                  for="ancestry"
+                  class="mb-2 block font-semibold"
+                >
+                  Race / Ancestry
+                </label>
+
+                <select
+                  id="ancestry"
+                  name="ancestry"
+                  class="w-full rounded-lg border border-slate-600 bg-slate-800 p-3 text-white"
+                  required
+                >
+                  <option value="">Choose a race</option>
+                </select>
+              </div>
+
+              <!-- Gender -->
+              <div>
+                <label for="gender" class="mb-2 block font-semibold">
+                  Gender
+                </label>
+
+                <select
+                  id="gender"
+                  name="gender"
+                  class="w-full rounded-lg border border-slate-600 bg-slate-800 p-3 text-white"
+                >
+                  <option value="">Choose gender</option>
+                  <option value="m">Male</option>
+                  <option value="f">Female</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Name Generator -->
+            <div class="mt-10 border-t border-slate-700 pt-8">
+              <h2 class="text-2xl font-bold text-purple-400">Character Name</h2>
+
+              <div class="mt-4 flex flex-col gap-4 sm:flex-row">
+                <input
+                  id="characterName"
+                  name="characterName"
+                  type="text"
+                  placeholder="Your character name"
+                  class="flex-1 rounded-lg border border-slate-600 bg-slate-800 p-3 text-white"
+                />
+
+                <button
+                  id="generateName"
+                  type="button"
+                  class="rounded-lg bg-purple-600 px-6 py-3 font-semibold text-white transition hover:bg-purple-500"
+                >
+                  Generate Random Name
+                </button>
+              </div>
+            </div>
+
+            <!-- Attributes -->
+            <div class="mt-10 border-t border-slate-700 pt-8">
+              <div
+                class="flex flex-col justify-between gap-4 sm:flex-row sm:items-center"
+              >
+                <div>
+                  <h2 class="text-2xl font-bold text-purple-400">Attributes</h2>
+
+                  <p class="mt-1 text-slate-400">
+                    Roll starting stats for your selected game system.
+                  </p>
+                </div>
+
+                <button
+                  id="rollAttributes"
+                  type="button"
+                  class="rounded-lg bg-purple-600 px-6 py-3 font-semibold text-white transition hover:bg-purple-500"
+                >
+                  Roll Attributes
+                </button>
+              </div>
+
+              <div
+                id="attributeResults"
+                class="mt-6 grid gap-4 sm:grid-cols-2 md:grid-cols-3"
+              >
+                <p class="text-slate-400">
+                  Choose a game system to see its attributes.
+                </p>
+              </div>
+            </div>
+          </form>
+        </section>
+      </main>
+    </main>
+
+    <footer id="main-footer"></footer>
+
+    <script type="module" src="/js/main.js"></script>
+    <script type="module" src="/js/character-generator.mjs"></script>
+  </body>
+</html>

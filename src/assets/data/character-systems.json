@@ -1,0 +1,116 @@
+{
+  "systems": [
+    {
+      "id": "dnd5e",
+      "name": "Dungeons & Dragons",
+      "ancestryLabel": "Species",
+      "diceFormula": "4d6H3",
+      "ancestries": [
+        "Human",
+        "Elf",
+        "Dwarf",
+        "Halfling",
+        "Gnome",
+        "Dragonborn",
+        "Tiefling",
+        "Orc"
+      ],
+      "attributes": [
+        {
+          "name": "strength",
+          "label": "Strength"
+        },
+        {
+          "name": "dexterity",
+          "label": "Dexterity"
+        },
+        {
+          "name": "constitution",
+          "label": "Constitution"
+        },
+        {
+          "name": "intelligence",
+          "label": "Intelligence"
+        },
+        {
+          "name": "wisdom",
+          "label": "Wisdom"
+        },
+        {
+          "name": "charisma",
+          "label": "Charisma"
+        }
+      ]
+    },
+    {
+      "id": "pathfinder2e",
+      "name": "Pathfinder",
+      "ancestryLabel": "Ancestry",
+      "diceFormula": "4d6H3",
+      "ancestries": [
+        "Human",
+        "Elf",
+        "Dwarf",
+        "Gnome",
+        "Goblin",
+        "Halfling",
+        "Orc"
+      ],
+      "attributes": [
+        {
+          "name": "strength",
+          "label": "Strength"
+        },
+        {
+          "name": "dexterity",
+          "label": "Dexterity"
+        },
+        {
+          "name": "constitution",
+          "label": "Constitution"
+        },
+        {
+          "name": "intelligence",
+          "label": "Intelligence"
+        },
+        {
+          "name": "wisdom",
+          "label": "Wisdom"
+        },
+        {
+          "name": "charisma",
+          "label": "Charisma"
+        }
+      ]
+    },
+    {
+      "id": "villains-vigilantes",
+      "name": "Villains & Vigilantes",
+      "ancestryLabel": "Character Type",
+      "diceFormula": "3d6",
+      "ancestries": ["Human", "Mutant", "Alien", "Other"],
+      "attributes": [
+        {
+          "name": "strength",
+          "label": "Strength"
+        },
+        {
+          "name": "endurance",
+          "label": "Endurance"
+        },
+        {
+          "name": "agility",
+          "label": "Agility"
+        },
+        {
+          "name": "intelligence",
+          "label": "Intelligence"
+        },
+        {
+          "name": "charisma",
+          "label": "Charisma"
+        }
+      ]
+    }
+  ]
+}
