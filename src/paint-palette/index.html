@@ -1,34 +1,87 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="author" content="David Jukes" />
-    <meta
-      name="description"
-      content="Vault of Jukes | Paint Palette is a tool to assist mini painters figure out what colors will look good on together."
-    />
 
-    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="David Jukes" />
+  <meta name="description"
+    content="Vault of Jukes | Paint Palette is a tool to assist mini painters figure out what colors will look good on together." />
 
-    <title>Mini Paint Palette | Vault of Jukes</title>
-  </head>
+  <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico" />
 
-  <body class="min-h-screen bg-slate-950 text-slate-100">
-    <header id="main-header"></header>
+  <title>Mini Paint Palette | Vault of Jukes</title>
+</head>
 
-    <main class="mx-auto max-w-7xl px-6 py-12">
-      <h1 class="text-4xl font-bold text-purple-400">
-        Mini Paint Palette Picker
-      </h1>
+<body class="min-h-screen bg-slate-950 text-slate-100">
+  <header id="main-header"></header>
 
-      <p class="mt-4 text-lg text-slate-300">
-        Build a color palette for your next miniature painting project.
-      </p>
-    </main>
+  <main class="mx-auto max-w-7xl px-6 py-12">
 
-    <footer id="main-footer"></footer>
+    <div>
+      <label for="primaryColor" class="mb-2 block font-semibold">
+        Choose Your Primary Paint Color
+      </label>
 
-    <script type="module" src="/js/main.js"></script>
-  </body>
+      <div class="flex items-center gap-4">
+        <input id="primaryColor" name="primaryColor" type="color" value="#663399"
+          class="h-16 w-24 cursor-pointer rounded-lg border border-slate-600 bg-slate-800" />
+
+        <div>
+          <p class="text-sm text-slate-400">Selected Color</p>
+
+          <p id="selectedHex" class="text-lg font-semibold text-white">
+            #663399
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Palette Type -->
+    <div>
+      <label for="paletteMode" class="mb-2 block font-semibold">
+        Palette Type
+      </label>
+
+      <select id="paletteMode" name="paletteMode">
+        <option value="monochrome">Monochrome</option>
+        <option value="monochrome-dark">Dark Monochrome</option>
+        <option value="monochrome-light">Light Monochrome</option>
+        <option value="analogic">Analogous</option>
+        <option value="complement">Complementary</option>
+        <option value="triad">Triadic</option>
+        <option value="quad">Four-Color</option>
+      </select>
+    </div>
+
+    <div class="mt-8">
+      <button id="generatePalette" type="button"
+        class="rounded-lg bg-purple-600 px-6 py-3 font-semibold text-white transition hover:bg-purple-500">
+        Generate Palette
+      </button>
+    </div>
+    </section>
+
+    <!-- Results -->
+    <section class="mt-10">
+      <div class="mb-6">
+        <h2 class="text-2xl font-bold text-purple-400">Your Paint Palette</h2>
+
+        <p class="mt-2 text-slate-400">
+          Use these colors as a starting point for your miniature.
+        </p>
+      </div>
+
+      <div id="paletteResults" class="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+        <p class="text-slate-400">Choose a color and generate a palette.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer id="main-footer"></footer>
+
+  <script type="module" src="/js/main.js"></script>
+  <script type="module" src="/js/paint-palette.mjs"></script>
+</body>
+
 </html>
