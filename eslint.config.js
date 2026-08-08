@@ -9,7 +9,7 @@ export default [
   js.configs.recommended,
 
   {
-    files: ["src/**/*.js"],
+    files: ["src/**/*.{js,mjs}"],
 
     languageOptions: {
       ecmaVersion: "latest",
