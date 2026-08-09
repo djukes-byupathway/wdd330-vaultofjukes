@@ -1,0 +1,116 @@
+{
+  "games": [
+    {
+      "name": "Dungeons and Dragons",
+      "website": "https://www.dungeonsanddragons.com/",
+      "imgurl": "dnd-logo.webp",
+      "type": "Role Playing Game",
+      "publisher": "Wizards of the Coast",
+      "description": "The Grandaddy of RPGs, this game has been around the block and is currently on the 5th (and a half) edition."
+    },
+    {
+      "name": "Pathfinder",
+      "website": "https://paizo.com/pathfinder",
+      "imgurl": "pathfinder.png",
+      "type": "Role Playing Game",
+      "publisher": "Paizo",
+      "description": "Pathfinder is a fantasy tabletop roleplaying game where you tell heroic tales in a world of quests, magic, monsters, and treasures. Your choices, and the roll of the dice, determine how the story unfolds."
+    },
+    {
+      "name": "Gamma World",
+      "website": "https://en.wikipedia.org/wiki/Gamma_World",
+      "imgurl": "gammaworld.webp",
+      "type": "Role Playing Game",
+      "publisher": "TSR / Wizards of the Coast",
+      "description": "Gamma World is a post-apocalyptic science fantasy role-playing game where players explore a devastated Earth, encountering mutated creatures and ancient technology."
+    },
+    {
+      "name": "Villains and Vigilantes",
+      "website": "https://en.wikipedia.org/wiki/Villains_and_Vigilantes",
+      "imgurl": "vnv.webp",
+      "type": "Role Playing Game",
+      "publisher": "Fantasy Games Unlimited",
+      "description": "Super Hero role playing game"
+    },
+    {
+      "name": "Malifaux",
+      "website": "https://www.wyrd-games.net/malifaux-fourth-edition",
+      "imgurl": "malifaux.webp",
+      "type": "Table Top Skirmish Game",
+      "publisher": "Wyrd Miniatures, LLC",
+      "description": "Malifaux is a miniatures skirmish game where players take control of a crew led by a master and fight to achieve their hidden schemes and other goals. Manipulate fate using the cards dealt to you and rise to power on the bloody streets of Malifaux City!"
+    },
+    {
+      "name": "Bushido",
+      "website": "https://gctstudios.com/pages/bushido",
+      "imgurl": "bushido.webp",
+      "type": "Role Playing Game",
+      "publisher": "GCT Studios",
+      "description": "Bushido is a fantasy tabletop miniatures skirmish game for two players, set in the fictional Jwar Isles.The Jwar Isles are inspired by the mythologies of East and South East Asia; most notably, but not limited to, Japan."
+    },
+    {
+      "name": "DnD Minitatures Chainmail",
+      "website": "https://greyhawkonline.com/greyhawkwiki/Chainmail_Miniatures_Game",
+      "imgurl": "chainmail1.webp",
+      "type": "Role Playing Game",
+      "publisher": "WOTC",
+      "description": "Set in the world of Greyhawk, 6 factions fight over the relics of a dead god."
+    },
+    {
+      "name": "Warhammer 40,000",
+      "website": "https://www.warhammer.com/",
+      "imgurl": "warhammer40k.webp",
+      "type": "Table Top War Game",
+      "publisher": "Games Workshop",
+      "description": "Skirmish Combat in the 41st Millennium"
+    },
+    {
+      "name": "Warhammer Old World",
+      "website": "https://www.warhammer.com/",
+      "imgurl": "oldworld-2.webp",
+      "type": "Role Playing Game",
+      "publisher": "Games Workshop",
+      "description": "Set in a European like world, in the late medieval ages."
+    },
+    {
+      "name": "Bolt Action",
+      "website": "https: //us.warlordgames.com/collections/bolt-action",
+      "imgurl": "risk.webp",
+      "type": "Board Game",
+      "publisher": "Hasbro",
+      "description": "Board game of world domination."
+    },
+    {
+      "name": "Axis and Allies",
+      "website": "https://en.wikipedia.org/wiki/Axis_%26_Allies",
+      "imgurl": "axisandallies-2.webp",
+      "type": "Board Game",
+      "publisher": "Milton Bradley / Avalon Hill",
+      "description": "WW2 Boardgame."
+    },
+    {
+      "name": "Kill Team",
+      "website": "https://www.warhammer.com/killteam",
+      "imgurl": "killteam.webp",
+      "type": "Table Top War Game",
+      "publisher": "Games Workshop",
+      "description": "Grimdark setting in the far future. Humanity is in perpetual war."
+    },
+    {
+      "name": "Settler of Catan",
+      "website": "https://www.catan.com/",
+      "imgurl": "catan.webp",
+      "type": "Board Game",
+      "publisher": "CATAN",
+      "description": "Picture yourself in the era of discoveries: after a long voyage of great deprivation, your ships have finally reached the coast of an uncharted island. Its name shall be Catan!"
+    },
+    {
+      "name": "Malediction",
+      "website": "https://malediction.gg/",
+      "imgurl": "malediction.webp",
+      "type": "Miniature Card Game",
+      "publisher": "Loot Studios",
+      "description": "Malediction is the world's first 3D-printable Miniature Card Game."
+    }
+  ]
+}
