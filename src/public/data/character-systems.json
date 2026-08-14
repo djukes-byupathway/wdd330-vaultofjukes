@@ -40,7 +40,31 @@
           "name": "charisma",
           "label": "Charisma"
         }
-      ]
+      ],
+      "classLabel": "Class",
+      "classes": [
+        "Barbarian",
+        "Bard",
+        "Cleric",
+        "Druid",
+        "Fighter",
+        "Monk",
+        "Paladin",
+        "Ranger",
+        "Rogue",
+        "Sorcerer",
+        "Warlock",
+        "Wizard"
+      ],
+      "suggestionLabel": "Suggested Class",
+      "archetypes": {
+        "strength": ["Fighter", "Barbarian", "Paladin"],
+        "dexterity": ["Rogue", "Ranger", "Monk"],
+        "constitution": ["Barbarian", "Fighter"],
+        "intelligence": ["Wizard", "Artificer"],
+        "wisdom": ["Cleric", "Druid", "Ranger"],
+        "charisma": ["Bard", "Sorcerer", "Warlock"]
+      }
     },
     {
       "id": "pathfinder2e",
@@ -81,7 +105,37 @@
           "name": "charisma",
           "label": "Charisma"
         }
-      ]
+      ],
+      "classLabel": "Class",
+      "classes": [
+        "Alchemist",
+        "Barbarian",
+        "Bard",
+        "Champion",
+        "Cleric",
+        "Druid",
+        "Fighter",
+        "Investigator",
+        "Monk",
+        "Oracle",
+        "Paladin",
+        "Ranger",
+        "Rogue",
+        "Sorcerer",
+        "Swashbuckler",
+        "Warlock",
+        "Witch",
+        "Wizard"
+      ],
+      "suggestionLabel": "Suggested Class",
+      "archetypes": {
+        "strength": ["Fighter", "Barbarian", "Champion"],
+        "dexterity": ["Rogue", "Ranger", "Monk", "Swashbuckler"],
+        "constitution": ["Barbarian", "Champion", "Fighter"],
+        "intelligence": ["Wizard", "Witch", "Investigator", "Alchemist"],
+        "wisdom": ["Cleric", "Druid", "Ranger"],
+        "charisma": ["Bard", "Sorcerer", "Oracle", "Swashbuckler"]
+      }
     },
     {
       "id": "villains-vigilantes",
@@ -110,7 +164,35 @@
           "name": "charisma",
           "label": "Charisma"
         }
-      ]
+      ],
+      "classLabel": "Hero Style",
+      "classes": [
+        "Powerhouse",
+        "Brawler",
+        "Front-Line Defender",
+        "Invulnerable Hero",
+        "Acrobat",
+        "Speedster",
+        "Martial Hero",
+        "Gadgeteer",
+        "Scientist Hero",
+        "Tactician",
+        "Team Leader",
+        "Celebrity Hero",
+        "Inspirational Hero"
+      ],
+      "suggestionLabel": "Suggested Hero Style",
+      "archetypes": {
+        "strength": ["Powerhouse", "Brawler", "Heavy Hitter"],
+        "endurance": [
+          "Front-Line Defender",
+          "Invulnerable Hero",
+          "Tough-as-Nails Hero"
+        ],
+        "agility": ["Acrobat", "Speedster", "Martial Hero"],
+        "intelligence": ["Gadgeteer", "Scientist Hero", "Tactician"],
+        "charisma": ["Team Leader", "Celebrity Hero", "Inspirational Hero"]
+      }
     }
   ]
 }

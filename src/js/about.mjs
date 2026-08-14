@@ -16,7 +16,7 @@ function createGameCard(game) {
   const card = document.createElement("article");
 
   card.className =
-    "overflow-hidden rounded-xl border border-slate-700 bg-slate-900";
+    "feature-card overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900";
 
   card.innerHTML = `
     <a
@@ -32,11 +32,11 @@ function createGameCard(game) {
       />
 
       <div class="p-4">
-        <h3 class="text-center font-semibold text-white">
+        <h3 class="text-center font-semibold text-slate-900 dark:text-white">
           ${game.name}
         </h3>
 
-        <p class="mt-1 text-center text-sm text-slate-400">
+        <p class="mt-1 text-center text-sm text-slate-500 dark:text-slate-400">
           ${game.publisher}
         </p>
       </div>

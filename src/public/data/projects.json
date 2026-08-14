@@ -7,7 +7,7 @@
       "gameSystem": "Multiple RPG Systems",
       "targetDate": "Fall 2026",
       "description": "A browser-based tool for generating character names and rolling starting attributes for several tabletop role-playing systems.",
-      "image": "/assets/images/character-creation.webp"
+      "image": "/assets/images/char-creation.webp"
     },
     {
       "title": "Mini Paint Palette Picker",
@@ -25,7 +25,7 @@
       "gameSystem": "Original",
       "targetDate": "Coming Soon",
       "description": "Something new is being designed inside the Vault. More information will be revealed as development continues.",
-      "image": "/assets/images/projects.webp"
+      "image": "/assets/images/mystery-project.webp"
     },
     {
       "title": "Dave Stinks at Painting Minis",
@@ -34,7 +34,7 @@
       "gameSystem": "Tabletop Miniatures",
       "targetDate": "Winter 2026",
       "description": "Series of short videos of Dave trying to figure out what the hell is going wrong with the paint, brush, or design of minis that stop him from wanted to finish.",
-      "image": "/assets/images/projects.webp"
+      "image": "/assets/images/dave-sucks-at-painting.webp"
     },
     {
       "title": "Valeigh",
@@ -43,7 +43,7 @@
       "gameSystem": "DnD",
       "targetDate": "2028",
       "description": "Valeigh is a world of dichotomies. The hellish environment of decaying inner cities in magically industrialized states juxtaposes with the lush green jungles and the happy folk who populate them. Will you bring these new lands to heel and spread the corruption of your home state, or will you embrace the lifestyle of the savages? ",
-      "image": "/assets/images/projects.webp"
+      "image": "/assets/images/valeigh.webp"
     },
     {
       "title": "Dark World",
@@ -52,7 +52,7 @@
       "gameSystem": "DnD",
       "targetDate": "2028",
       "description": "'This world is vile, and an affront to true creation! An affront I say. THe Holy Council declares is so, Praise Remin, it does! We are not the childre of this world, we are the cure of the gods. The forces of evil created this vile orb, they broke the ruiles of eternity. Evil CREATED! This is the affront, my flock, this IS the affront! Praise Remin who found this abomination. Praise Dumul, praise Bengarl, praise Ebul, Praise Delriene, Praise Fossergrim, Praise Maygone. Praise all of the Holy Council of Gods for bringing us to this world to cure it. Raise your weapons, Raise your Cure!'",
-      "image": "/assets/images/projects.webp"
+      "image": "/assets/images/darkworld.webp"
     },
     {
       "title": "Planet of the Orc",
@@ -61,7 +61,7 @@
       "gameSystem": "DnD",
       "targetDate": "2029",
       "description": "Spoof off of the Planet of the Apes series of movies, only this time the setting is planing hopping adventurers are dropped into a world where Orc thanes lead northern European style civilizations against the Goblin Empire led by the Bugbear senators, expanded by hobgoblin centurians, supplied through citizen goblins whose industry is propped up by slave labor of the lower races, the elf, the dwarf, and the short lived, halflings and humans. Across the sea a grand civilization blossoms in the arid environment, Kobalds magically weaving together cities, pyramids, and massive monuments through their innate connection to aether.",
-      "image": "/assets/images/projects.webp"
+      "image": "/assets/images/plant-ork.webp"
     },
     {
       "title": "Seekers",
@@ -70,7 +70,7 @@
       "gameSystem": "DnD",
       "targetDate": "Spring 2030",
       "description": "Plucked from your world by a mad wizard, given a simple ultimatum, find some esoteric artifact within 90 days, or die. Your party must band together, avoid deadly flora and fauna, make friends, and get your hands on that artifact! This one can be great fun for DMs who want to poke at murder hobo parties, a little Suicide Squad action.",
-      "image": "/assets/images/projects.webp"
+      "image": "/assets/images/seekers.webp"
     }
   ]
 }

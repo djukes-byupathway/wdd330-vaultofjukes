@@ -12,38 +12,51 @@
     <title>Vault of Jukes</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="./assets/images/voj_icon_2.webp"
+    />
   </head>
 
-  <body class="min-h-screen bg-slate-950 text-slate-100">
+  <body class="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-100">
     <header id="main-header"></header>
 
     <main class="mx-auto max-w-5xl p-8">
       <!-- Hero -->
       <section
-        class="flex min-h-[65vh] items-center justify-center bg-slate-900 px-6 py-20 text-center"
+        class="relative flex min-h-[70vh] items-center justify-center bg-cover bg-center px-6 py-20 text-center"
+        style="
+          background-image: url(&quot;/assets/images/vault-large.webp&quot;);
+        "
       >
-        <div class="max-w-4xl">
+        <!-- Dark overlay -->
+        <div
+          class="absolute inset-0 bg-slate-900/55 dark:bg-slate-950/75"
+        ></div>
+
+        <!-- Hero content -->
+        <div class="hero-content relative z-10 max-w-4xl">
           <p
-            class="mb-3 text-sm font-bold uppercase tracking-[0.3em] text-purple-400"
+            class="mb-3 text-sm font-bold uppercase tracking-[0.3em] text-purple-600 dark:text-purple-400"
           >
             Welcome to the Vault
           </p>
 
-          <h1 class="text-5xl font-bold tracking-tight md:text-7xl">
+          <h1 class="text-5xl font-bold tracking-tight text-white md:text-7xl">
             Vault of Jukes
           </h1>
 
           <p
-            class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-300 md:text-xl"
+            class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-200 md:text-xl"
           >
-            Home to amazing adventures, clever traps, tricks, and tools for game
-            masters , and welcoming and loyal community.
+            Tabletop games, creative tools, and projects from a family that
+            loves to roll dice, paint minis, build characters, and play.
           </p>
 
           <a
             href="#explore"
-            class="mt-8 inline-block rounded-lg bg-purple-600 px-6 py-3 font-semibold text-white transition hover:bg-purple-500"
+            class="mt-8 inline-block rounded-lg bg-purple-600 px-6 py-3 font-semibold text-slate-900 dark:text-white transition hover:bg-purple-500"
           >
             Explore the Vault
           </a>
@@ -51,23 +64,56 @@
       </section>
 
       <!-- Introduction -->
-      <section class="mx-auto max-w-4xl px-6 py-16 text-center">
-        <h2 class="text-3xl font-bold">What is Vault of Jukes?</h2>
+      <section class="bg-white px-6 py-14 dark:bg-slate-950">
+        <div
+          class="mx-auto grid max-w-5xl items-center gap-10 md:grid-cols-[280px_1fr]"
+        >
+          <img
+            src="/assets/images/voj_3.webp"
+            alt="Vault of Jukes logo featuring a purple fantasy key"
+            class="mx-auto w-full max-w-[280px] rounded-2xl"
+          />
 
-        <p class="mt-4 text-lg leading-8 text-slate-300">
+          <div>
+            <p
+              class="text-sm font-bold uppercase tracking-[0.25em] text-purple-600 dark:text-purple-400"
+            >
+              Welcome to the Vault
+            </p>
+
+            <h2 class="mt-2 text-3xl font-bold text-slate-900 dark:text-white">
+              What is Vault of Jukes?
+            </h2>
+
+            <p class="mt-5 leading-7 text-slate-600 dark:text-slate-300">
+              Vault of Jukes is a place for tabletop gaming, creativity,
+              imagination, and the projects that grow from the things we love to
+              play and create together.
+            </p>
+          </div>
+        </div>
+      </section>
+      <!--       <section class="mx-auto max-w-4xl px-6 py-16 text-center">
+        <h2 class="text-3xl font-bold text-slate-900 dark:text-white">
+          What is Vault of Jukes?
+        </h2>
+
+        <p class="mt-4 text-lg leading-8 text-slate-700 dark:text-slate-300">
           Vault of Jukes is our home for tabletop gaming tools, experiments, and
           projects. Whether you need a new RPG character, inspiration for your
           next miniature, or just want to see what we're working on, you'll find
           it here.
         </p>
-      </section>
+      </section> -->
 
       <!-- Company Details Cards -->
       <section id="explore" class="mx-auto max-w-7xl px-6 pb-20">
         <div class="mb-10 text-center">
-          <h2 class="text-3xl font-bold">Explore the Vault</h2>
+          <h2 class="text-3xl font-bold text-slate-900 dark:text-white">
+            Explore the Vault
+          </h2>
 
-          <p class="mt-3 text-slate-400">
+          <p class="mt-3 text-slate-500 dark:text-slate-400">
             Choose where your next adventure begins.
           </p>
         </div>
@@ -75,27 +121,29 @@
         <div class="grid gap-8 md:grid-cols-3">
           <!-- Character Creation -->
           <article
-            class="overflow-hidden rounded-xl border border-slate-700 bg-slate-900 shadow-lg"
+            class="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-lg"
           >
             <img
-              src="./assets/images/character-creation.webp"
-              alt="Tabletop role-playing character creation"
-              class="h-56 w-full object-cover"
+              src="./assets/images/char-creation.webp"
+              alt="Tabletop character creation materials"
+              class="aspect-[8/5] w-full object-cover"
             />
 
             <div class="p-6">
-              <h3 class="text-2xl font-bold text-purple-400">
+              <h3
+                class="text-2xl font-bold text-purple-600 dark:text-purple-400"
+              >
                 Character Creation
               </h3>
 
-              <p class="mt-3 leading-7 text-slate-300">
+              <p class="mt-3 leading-7 text-slate-700 dark:text-slate-300">
                 Create characters for multiple role-playing systems, generate
                 fantasy names, and roll your character's attributes.
               </p>
 
               <a
                 href="./character-generator/"
-                class="mt-6 inline-block font-semibold text-purple-400 hover:text-purple-300"
+                class="mt-6 inline-block font-semibold text-purple-600 dark:text-purple-400 hover:text-purple-300"
               >
                 Create a Character →
               </a>
@@ -104,27 +152,29 @@
 
           <!-- Miniature Painting -->
           <article
-            class="overflow-hidden rounded-xl border border-slate-700 bg-slate-900 shadow-lg"
+            class="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-lg"
           >
             <img
               src="./assets/images/mini-painting.webp"
               alt="Painted tabletop gaming miniatures"
-              class="h-56 w-full object-cover"
+              class="aspect-[8/5] w-full object-cover"
             />
 
             <div class="p-6">
-              <h3 class="text-2xl font-bold text-purple-400">
+              <h3
+                class="text-2xl font-bold text-purple-600 dark:text-purple-400"
+              >
                 Miniature Painting
               </h3>
 
-              <p class="mt-3 leading-7 text-slate-300">
+              <p class="mt-3 leading-7 text-slate-700 dark:text-slate-300">
                 Pick a starting color and generate a complementary or
                 monochromatic palette for your next miniature.
               </p>
 
               <a
                 href="./paint-palette/"
-                class="mt-6 inline-block font-semibold text-purple-400 hover:text-purple-300"
+                class="mt-6 inline-block font-semibold text-purple-600 dark:text-purple-400 hover:text-purple-300"
               >
                 Build a Palette →
               </a>
@@ -133,25 +183,29 @@
 
           <!-- Projects -->
           <article
-            class="overflow-hidden rounded-xl border border-slate-700 bg-slate-900 shadow-lg"
+            class="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-lg"
           >
             <img
               src="./assets/images/projects.webp"
               alt="Tabletop gaming projects and supplies"
-              class="h-56 w-full object-cover"
+              class="aspect-[8/5] w-full object-cover"
             />
 
             <div class="p-6">
-              <h3 class="text-2xl font-bold text-purple-400">Our Projects</h3>
+              <h3
+                class="text-2xl font-bold text-purple-600 dark:text-purple-400"
+              >
+                Our Projects
+              </h3>
 
-              <p class="mt-3 leading-7 text-slate-300">
+              <p class="mt-3 leading-7 text-slate-700 dark:text-slate-300">
                 Follow the games, tools, builds, and tabletop projects currently
                 making their way through the Vault.
               </p>
 
               <a
                 href="./projects/"
-                class="mt-6 inline-block font-semibold text-purple-400 hover:text-purple-300"
+                class="mt-6 inline-block font-semibold text-purple-600 dark:text-purple-400 hover:text-purple-300"
               >
                 See What's Coming →
               </a>

@@ -6,7 +6,7 @@
     <meta name="author" content="David Jukes" />
     <meta
       name="description"
-      content="Vault of Jukes | Paint Palette is a tool to assist mini painters figure out what colors will look good on together."
+      content="Vault of Jukes | Paint Palette is a tool to assist mini painters figure out what colors will look good on a model together."
     />
 
     <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico" />
@@ -14,11 +14,20 @@
     <title>Mini Paint Palette | Vault of Jukes</title>
   </head>
 
-  <body class="min-h-screen bg-slate-950 text-slate-100">
+  <body class="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-100">
     <header id="main-header"></header>
 
     <main class="mx-auto max-w-7xl px-6 py-12">
+      <h1
+        class="text-5xl font-bold tracking-tight text-slate-900 dark:text-white md:text-7xl"
+      >
+        Miniature Painting
+      </h1>
+
       <div>
+        <h2 class="text-3xl font-bold text-slate-900 dark:text-white">
+          Palette Generator
+        </h2>
         <label for="primaryColor" class="mb-2 block font-semibold">
           Choose Your Primary Paint Color
         </label>
@@ -29,13 +38,18 @@
             name="primaryColor"
             type="color"
             value="#663399"
-            class="h-16 w-24 cursor-pointer rounded-lg border border-slate-600 bg-slate-800"
+            class="h-16 w-24 cursor-pointer rounded-lg border border-slate-800 bg-slate-300 dark:bg-slate-800"
           />
 
           <div>
-            <p class="text-sm text-slate-400">Selected Color</p>
+            <p class="text-sm text-slate-500 dark:text-slate-400">
+              Selected Color
+            </p>
 
-            <p id="selectedHex" class="text-lg font-semibold text-white">
+            <p
+              id="selectedHex"
+              class="text-lg font-semibold text-slate-900 dark:text-white"
+            >
               #663399
             </p>
           </div>
@@ -48,7 +62,11 @@
           Palette Type
         </label>
 
-        <select id="paletteMode" name="paletteMode">
+        <select
+          id="paletteMode"
+          name="paletteMode"
+          class="max-w-2xl rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 dark:border-slate-600 dark:bg-slate-800 dark:text-white"
+        >
           <option value="monochrome">Monochrome</option>
           <option value="monochrome-dark">Dark Monochrome</option>
           <option value="monochrome-light">Light Monochrome</option>
@@ -63,28 +81,28 @@
         <button
           id="generatePalette"
           type="button"
-          class="rounded-lg bg-purple-600 px-6 py-3 font-semibold text-white transition hover:bg-purple-500"
+          class="max-w-2xl rounded-lg bg-purple-600 px-6 py-3 font-semibold text-white transition hover:bg-purple-500"
         >
           Generate Palette
         </button>
       </div>
-      <
 
       <!-- Results -->
       <section class="mt-10">
-        <div class="mb-6">
-          <h2 class="text-2xl font-bold text-purple-400">Your Paint Palette</h2>
+        <div class="mb-6 text-center">
+          <h2 class="text-2xl font-bold text-slate-900 dark:text-white">
+            Your Paint Palette
+          </h2>
 
-          <p class="mt-2 text-slate-400">
-            Use these colors as a starting point for your miniature.
+          <p class="mt-2 text-slate-500 dark:text-slate-400">
+            Use these colors as inspiration for your miniature.
           </p>
         </div>
 
-        <div
-          id="paletteResults"
-          class="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5"
-        >
-          <p class="text-slate-400">Choose a color and generate a palette.</p>
+        <div id="paletteResults" class="flex flex-col items-center gap-8">
+          <p class="text-slate-500 dark:text-slate-400">
+            Choose a color and generate a palette.
+          </p>
         </div>
       </section>
     </main>

@@ -1,162 +1,272 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="author" content="David Jukes" />
+
     <meta
       name="description"
-      content="Vault of Jukes | Character Generator is a tool to assist players create the character quickly and get playing."
+      content="Create, roll, and save tabletop RPG characters with the Vault of Jukes Character Generator."
     />
 
-    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico" />
+    <link rel="icon" href="/assets/images/favicon.ico" />
 
     <title>Character Generator | Vault of Jukes</title>
   </head>
 
-  <body class="min-h-screen bg-slate-950 text-slate-100">
+  <body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-white">
     <header id="main-header"></header>
 
     <main class="mx-auto max-w-7xl px-6 py-12">
-      <main class="mx-auto max-w-5xl px-6 py-12">
-        <section class="mb-10">
-          <p
-            class="text-sm font-bold uppercase tracking-[0.25em] text-purple-400"
-          >
-            Character Creation
-          </p>
-
-          <h1 class="mt-2 text-4xl font-bold md:text-5xl">
-            Character Generator
-          </h1>
-
-          <p class="mt-4 max-w-2xl text-lg text-slate-300">
-            Choose your game system and character details, then generate a
-            fantasy name and roll your starting attributes.
-          </p>
-        </section>
-
-        <section
-          class="rounded-xl border border-slate-700 bg-slate-900 p-6 md:p-8"
+      <!-- Page Heading -->
+      <section class="mb-10">
+        <p
+          class="text-sm font-bold uppercase tracking-[0.25em] text-purple-600 dark:text-purple-400"
         >
-          <form id="character-form">
-            <div class="grid gap-6 md:grid-cols-3">
-              <!-- Game System -->
-              <div>
-                <label for="gameSystem" class="mb-2 block font-semibold">
-                  Game System
-                </label>
+          Build Your Character
+        </p>
 
-                <select
-                  id="gameSystem"
-                  name="gameSystem"
-                  class="w-full rounded-lg border border-slate-600 bg-slate-800 p-3 text-white"
-                  required
-                >
-                  <option value="">Choose a system</option>
-                  <option value="dnd5e">Dungeons & Dragons</option>
-                  <option value="pathfinder2e">Pathfinder</option>
-                  <option value="villains-vigilantes">
-                    Villains & Vigilantes
-                  </option>
-                </select>
-              </div>
+        <h1 class="mt-2 text-4xl font-bold md:text-5xl">Character Generator</h1>
 
-              <!-- Race / Ancestry -->
-              <div>
-                <label
-                  id="ancestryLabel"
-                  for="ancestry"
-                  class="mb-2 block font-semibold"
-                >
-                  Race / Ancestry
-                </label>
+        <p
+          class="mt-4 max-w-3xl text-lg leading-8 text-slate-600 dark:text-slate-300"
+        >
+          Create a character, roll starting attributes, and let the Vault
+          suggest a class or hero style based on your strongest abilities. You
+          can save up to five characters in this browser.
+        </p>
+      </section>
 
-                <select
-                  id="ancestry"
-                  name="ancestry"
-                  class="w-full rounded-lg border border-slate-600 bg-slate-800 p-3 text-white"
-                  required
-                >
-                  <option value="">Choose a race</option>
-                </select>
-              </div>
+      <!-- Saved Characters -->
+      <section
+        class="rounded-xl border border-slate-200 bg-white p-6 dark:border-slate-700 dark:bg-slate-900"
+      >
+        <div
+          class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
+        >
+          <div>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white">
+              Saved Characters
+            </h2>
 
-              <!-- Gender -->
-              <div>
-                <label for="gender" class="mb-2 block font-semibold">
-                  Gender
-                </label>
+            <p
+              id="savedCount"
+              class="mt-1 text-sm text-slate-500 dark:text-slate-400"
+            >
+              0 of 5 saved
+            </p>
+          </div>
 
-                <select
-                  id="gender"
-                  name="gender"
-                  class="w-full rounded-lg border border-slate-600 bg-slate-800 p-3 text-white"
-                >
-                  <option value="">Choose gender</option>
-                  <option value="m">Male</option>
-                  <option value="f">Female</option>
-                </select>
-              </div>
+          <button
+            id="newCharacter"
+            type="button"
+            disabled
+            class="rounded-lg bg-purple-600 px-5 py-3 font-semibold text-white transition hover:bg-purple-500 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            + Create New Character
+          </button>
+        </div>
+
+        <div
+          id="savedCharacters"
+          class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+        >
+          <p class="text-slate-500 dark:text-slate-400">
+            Loading saved characters...
+          </p>
+        </div>
+      </section>
+
+      <!-- Character Editor -->
+      <section id="characterEditor" class="mt-10 hidden">
+        <div
+          class="rounded-xl border border-slate-200 bg-white p-6 dark:border-slate-700 dark:bg-slate-900"
+        >
+          <div
+            class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
+          >
+            <div>
+              <p
+                class="text-sm font-bold uppercase tracking-[0.2em] text-purple-600 dark:text-purple-400"
+              >
+                Character Sheet
+              </p>
+
+              <h2 id="editorTitle" class="mt-1 text-3xl font-bold">
+                Create New Character
+              </h2>
             </div>
 
-            <!-- Name Generator -->
-            <div class="mt-10 border-t border-slate-700 pt-8">
-              <h2 class="text-2xl font-bold text-purple-400">Character Name</h2>
+            <button
+              id="closeEditor"
+              type="button"
+              class="rounded-lg border border-slate-300 px-4 py-2 font-semibold text-slate-700 transition hover:bg-slate-100 dark:border-slate-600 dark:text-slate-300 dark:hover:bg-slate-800"
+            >
+              Close
+            </button>
+          </div>
 
-              <div class="mt-4 flex flex-col gap-4 sm:flex-row">
-                <input
-                  id="characterName"
-                  name="characterName"
-                  type="text"
-                  placeholder="Your character name"
-                  class="flex-1 rounded-lg border border-slate-600 bg-slate-800 p-3 text-white"
-                />
+          <!-- Character Details -->
+          <div class="mt-8 grid gap-6 md:grid-cols-2">
+            <!-- Character Name -->
+            <div>
+              <label for="characterName" class="mb-2 block font-semibold">
+                Character Name
+              </label>
+
+              <input
+                id="characterName"
+                name="characterName"
+                type="text"
+                maxlength="50"
+                placeholder="Enter character name"
+                class="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 dark:border-slate-600 dark:bg-slate-800 dark:text-white"
+              />
+            </div>
+
+            <!-- Game System -->
+            <div>
+              <label for="gameSystem" class="mb-2 block font-semibold">
+                Game System
+              </label>
+
+              <select
+                id="gameSystem"
+                name="gameSystem"
+                class="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 dark:border-slate-600 dark:bg-slate-800 dark:text-white"
+              >
+                <option value="">Choose a game system</option>
+              </select>
+            </div>
+
+            <!-- Ancestry -->
+            <div>
+              <label
+                id="ancestryLabel"
+                for="ancestry"
+                class="mb-2 block font-semibold"
+              >
+                Ancestry
+              </label>
+
+              <select
+                id="ancestry"
+                name="ancestry"
+                disabled
+                class="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-600 dark:bg-slate-800 dark:text-white"
+              >
+                <option value="">Choose a game system first</option>
+              </select>
+            </div>
+
+            <!-- Class / Hero Style -->
+            <div>
+              <label
+                id="classLabel"
+                for="characterClass"
+                class="mb-2 block font-semibold"
+              >
+                Class
+              </label>
+
+              <select
+                id="characterClass"
+                name="characterClass"
+                disabled
+                class="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-600 dark:bg-slate-800 dark:text-white"
+              >
+                <option value="">Choose a game system first</option>
+              </select>
+
+              <!-- Vault Suggestion -->
+              <div
+                id="classSuggestionBox"
+                class="mt-3 hidden rounded-lg border border-purple-200 bg-purple-50 p-3 dark:border-purple-800 dark:bg-purple-950/40"
+              >
+                <p
+                  id="classSuggestion"
+                  class="text-sm font-semibold text-purple-700 dark:text-purple-300"
+                ></p>
 
                 <button
-                  id="generateName"
+                  id="useSuggestion"
                   type="button"
-                  class="rounded-lg bg-purple-600 px-6 py-3 font-semibold text-white transition hover:bg-purple-500"
+                  class="mt-2 text-sm font-bold text-purple-700 underline hover:text-purple-500 dark:text-purple-300 dark:hover:text-purple-200"
                 >
-                  Generate Random Name
+                  Use Suggestion
                 </button>
               </div>
             </div>
+          </div>
+        </div>
 
-            <!-- Attributes -->
-            <div class="mt-10 border-t border-slate-700 pt-8">
-              <div
-                class="flex flex-col justify-between gap-4 sm:flex-row sm:items-center"
-              >
-                <div>
-                  <h2 class="text-2xl font-bold text-purple-400">Attributes</h2>
+        <!-- Attributes -->
+        <div
+          class="mt-8 rounded-xl border border-slate-200 bg-white p-6 dark:border-slate-700 dark:bg-slate-900"
+        >
+          <div
+            class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
+          >
+            <div>
+              <h2 class="text-2xl font-bold">Attributes</h2>
 
-                  <p class="mt-1 text-slate-400">
-                    Roll starting stats for your selected game system.
-                  </p>
-                </div>
-
-                <button
-                  id="rollAttributes"
-                  type="button"
-                  class="rounded-lg bg-purple-600 px-6 py-3 font-semibold text-white transition hover:bg-purple-500"
-                >
-                  Roll Attributes
-                </button>
-              </div>
-
-              <div
-                id="attributeResults"
-                class="mt-6 grid gap-4 sm:grid-cols-2 md:grid-cols-3"
-              >
-                <p class="text-slate-400">
-                  Choose a game system to see its attributes.
-                </p>
-              </div>
+              <p class="mt-1 text-slate-600 dark:text-slate-400">
+                Roll your character's starting attributes.
+              </p>
             </div>
-          </form>
-        </section>
-      </main>
+
+            <button
+              id="rollAttributes"
+              type="button"
+              disabled
+              class="rounded-lg bg-purple-600 px-5 py-3 font-semibold text-white transition hover:bg-purple-500 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              Roll Attributes
+            </button>
+          </div>
+
+          <div
+            id="attributeResults"
+            class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+          >
+            <p class="text-slate-500 dark:text-slate-400">
+              Choose a game system to see its attributes.
+            </p>
+          </div>
+        </div>
+
+        <!-- Save -->
+        <div
+          class="mt-8 rounded-xl border border-slate-200 bg-white p-6 dark:border-slate-700 dark:bg-slate-900"
+        >
+          <div
+            class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
+          >
+            <div>
+              <h2 class="text-xl font-bold">Save Character</h2>
+
+              <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
+                Characters are stored locally in this browser.
+              </p>
+            </div>
+
+            <button
+              id="saveCharacter"
+              type="button"
+              disabled
+              class="rounded-lg bg-purple-600 px-6 py-3 font-semibold text-white transition hover:bg-purple-500 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              Save Character
+            </button>
+          </div>
+
+          <p
+            id="editorMessage"
+            class="mt-4 hidden text-sm font-semibold"
+            aria-live="polite"
+          ></p>
+        </div>
+      </section>
     </main>
 
     <footer id="main-footer"></footer>

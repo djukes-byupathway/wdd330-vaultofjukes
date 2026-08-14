@@ -16,18 +16,18 @@ function createProjectCard(project) {
   const card = document.createElement("article");
 
   card.className =
-    "overflow-hidden rounded-xl border border-slate-700 bg-slate-900";
+    "feature-card  overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900";
 
   card.innerHTML = `
     <img
-      src="${project.image}"
-      alt=""
-      class="h-64 w-full object-cover"
-    />
+  src="${project.image}"
+  alt=""
+  class="aspect-[8/5] w-full object-cover"
+/>
 
     <div class="p-6">
       <div class="flex flex-wrap items-center justify-between gap-3">
-        <h2 class="text-2xl font-bold text-purple-400">
+        <h2 class="text-2xl font-bold  text-slate-900 dark:text-white">
           ${project.title}
         </h2>
 
@@ -38,37 +38,37 @@ function createProjectCard(project) {
         </span>
       </div>
 
-      <p class="mt-4 leading-7 text-slate-300">
+      <p class="mt-4 leading-7 text-slate-700 dark:text-slate-300">
         ${project.description}
       </p>
 
-      <dl class="mt-6 grid gap-4 border-t border-slate-700 pt-6 sm:grid-cols-3">
+      <dl class="mt-6 grid gap-4 border-t border-slate-200 dark:border-slate-700 pt-6 sm:grid-cols-3">
         <div>
-          <dt class="text-sm font-semibold text-slate-400">
+          <dt class="text-sm font-semibold text-slate-500 dark:text-slate-400">
             Category
           </dt>
 
-          <dd class="mt-1 text-white">
+          <dd class="mt-1 text-slate-900 dark:text-white">
             ${project.category}
           </dd>
         </div>
 
         <div>
-          <dt class="text-sm font-semibold text-slate-400">
+          <dt class="text-sm font-semibold text-slate-500 dark:text-slate-400">
             Game / System
           </dt>
 
-          <dd class="mt-1 text-white">
+          <dd class="mt-1 text-slate-900 dark:text-white">
             ${project.gameSystem}
           </dd>
         </div>
 
         <div>
-          <dt class="text-sm font-semibold text-slate-400">
+          <dt class="text-sm font-semibold text-slate-500 dark:text-slate-400">
             Target
           </dt>
 
-          <dd class="mt-1 text-white">
+          <dd class="mt-1 text-slate-900 dark:text-white">
             ${project.targetDate}
           </dd>
         </div>
