@@ -1,32 +1,40 @@
+import { qs, getLocalStorage, setLocalStorage } from "./utils.mjs";
+
 const STORAGE_KEY = "vaultCharacters";
 const MAX_CHARACTERS = 5;
 
-const savedCharacters = document.querySelector("#savedCharacters");
-const savedCount = document.querySelector("#savedCount");
-const newCharacterButton = document.querySelector("#newCharacter");
+// Saved character section
+const savedCharacters = qs("#savedCharacters");
+const savedCount = qs("#savedCount");
+const newCharacterButton = qs("#newCharacter");
 
-const characterEditor = document.querySelector("#characterEditor");
-const editorTitle = document.querySelector("#editorTitle");
-const closeEditorButton = document.querySelector("#closeEditor");
+// Character editor
+const characterEditor = qs("#characterEditor");
+const editorTitle = qs("#editorTitle");
+const closeEditorButton = qs("#closeEditor");
 
-const characterName = document.querySelector("#characterName");
-const gameSystem = document.querySelector("#gameSystem");
+// Character fields
+const characterName = qs("#characterName");
+const gameSystem = qs("#gameSystem");
 
-const ancestry = document.querySelector("#ancestry");
-const ancestryLabel = document.querySelector("#ancestryLabel");
+const ancestry = qs("#ancestry");
+const ancestryLabel = qs("#ancestryLabel");
 
-const characterClass = document.querySelector("#characterClass");
-const classLabel = document.querySelector("#classLabel");
+const characterClass = qs("#characterClass");
+const classLabel = qs("#classLabel");
 
-const classSuggestionBox = document.querySelector("#classSuggestionBox");
-const classSuggestion = document.querySelector("#classSuggestion");
-const useSuggestionButton = document.querySelector("#useSuggestion");
+// Vault suggestion
+const classSuggestionBox = qs("#classSuggestionBox");
+const classSuggestion = qs("#classSuggestion");
+const useSuggestionButton = qs("#useSuggestion");
 
-const attributeResults = document.querySelector("#attributeResults");
-const rollAttributesButton = document.querySelector("#rollAttributes");
+// Attributes
+const attributeResults = qs("#attributeResults");
+const rollAttributesButton = qs("#rollAttributes");
 
-const saveCharacterButton = document.querySelector("#saveCharacter");
-const editorMessage = document.querySelector("#editorMessage");
+// Save area
+const saveCharacterButton = qs("#saveCharacter");
+const editorMessage = qs("#editorMessage");
 
 let systems = [];
 
@@ -38,7 +46,7 @@ let currentHighestAttribute = null;
 let currentHighestScore = null;
 
 /**
- * Load character system data.
+ * Load game system information from JSON.
  */
 async function getSystems() {
   const response = await fetch("/data/character-systems.json");
@@ -53,40 +61,30 @@ async function getSystems() {
 }
 
 /**
- * Get saved characters from localStorage.
+ * Retrieve saved characters from localStorage.
  */
 function getSavedCharacters() {
-  const saved = localStorage.getItem(STORAGE_KEY);
+  const characters = getLocalStorage(STORAGE_KEY);
 
-  if (!saved) {
-    return [];
-  }
-
-  try {
-    const characters = JSON.parse(saved);
-
-    return Array.isArray(characters) ? characters : [];
-  } catch {
-    return [];
-  }
+  return Array.isArray(characters) ? characters : [];
 }
 
 /**
- * Save the entire character array to localStorage.
+ * Save the character array to localStorage.
  */
 function saveCharacters(characters) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(characters));
+  setLocalStorage(STORAGE_KEY, characters);
 }
 
 /**
- * Find the currently selected system.
+ * Return the currently selected game system.
  */
 function getSelectedSystem() {
   return systems.find((system) => system.id === gameSystem.value);
 }
 
 /**
- * Display available game systems.
+ * Populate the Game System select.
  */
 function displaySystems() {
   gameSystem.innerHTML = `
@@ -106,7 +104,7 @@ function displaySystems() {
 }
 
 /**
- * Display ancestry, species, or character-type options.
+ * Populate ancestry, species, or character type choices.
  */
 function displayAncestries(system) {
   ancestry.innerHTML = "";
@@ -133,12 +131,13 @@ function displayAncestries(system) {
 }
 
 /**
- * Display class or hero-style options.
+ * Populate class or hero-style choices.
  */
 function displayClasses(system) {
   characterClass.innerHTML = "";
 
   const label = system.classLabel ?? "Class";
+  const classes = system.classes ?? [];
 
   classLabel.textContent = label;
 
@@ -149,7 +148,7 @@ function displayClasses(system) {
 
   characterClass.appendChild(defaultOption);
 
-  system.classes.forEach((item) => {
+  classes.forEach((item) => {
     const option = document.createElement("option");
 
     option.value = item;
@@ -162,7 +161,7 @@ function displayClasses(system) {
 }
 
 /**
- * Display attribute cards.
+ * Create attribute cards for the selected system.
  */
 function displayAttributes(system) {
   attributeResults.innerHTML = "";
@@ -183,8 +182,10 @@ function displayAttributes(system) {
     const score = document.createElement("p");
 
     score.id = attribute.name;
+
     score.className =
       "mt-2 text-4xl font-bold text-purple-600 dark:text-purple-400";
+
     score.textContent = "-";
 
     card.appendChild(label);
@@ -195,7 +196,7 @@ function displayAttributes(system) {
 }
 
 /**
- * Reset ancestry.
+ * Reset ancestry field.
  */
 function resetAncestry() {
   ancestryLabel.textContent = "Ancestry";
@@ -210,7 +211,7 @@ function resetAncestry() {
 }
 
 /**
- * Reset class or hero style.
+ * Reset class or hero-style field.
  */
 function resetClasses() {
   classLabel.textContent = "Class";
@@ -225,7 +226,7 @@ function resetClasses() {
 }
 
 /**
- * Reset attribute area.
+ * Reset character attributes.
  */
 function resetAttributes() {
   currentScores = {};
@@ -257,7 +258,7 @@ function resetSuggestion() {
 }
 
 /**
- * Display a message beneath the save area.
+ * Display a message in the character editor.
  */
 function showMessage(message, type = "error") {
   editorMessage.textContent = message;
@@ -265,10 +266,12 @@ function showMessage(message, type = "error") {
   if (type === "success") {
     editorMessage.className =
       "mt-4 text-sm font-semibold text-green-700 dark:text-green-400";
-  } else {
-    editorMessage.className =
-      "mt-4 text-sm font-semibold text-red-700 dark:text-red-400";
+
+    return;
   }
+
+  editorMessage.className =
+    "mt-4 text-sm font-semibold text-red-700 dark:text-red-400";
 }
 
 /**
@@ -276,11 +279,12 @@ function showMessage(message, type = "error") {
  */
 function clearMessage() {
   editorMessage.textContent = "";
+
   editorMessage.className = "mt-4 hidden text-sm font-semibold";
 }
 
 /**
- * Reset the entire character editor.
+ * Reset the complete character editor.
  */
 function resetEditor() {
   currentCharacterId = null;
@@ -299,7 +303,7 @@ function resetEditor() {
 }
 
 /**
- * Open the editor.
+ * Show the character editor.
  */
 function showEditor() {
   characterEditor.classList.remove("hidden");
@@ -311,7 +315,7 @@ function showEditor() {
 }
 
 /**
- * Close the editor.
+ * Close and reset the character editor.
  */
 function closeEditor() {
   characterEditor.classList.add("hidden");
@@ -320,7 +324,7 @@ function closeEditor() {
 }
 
 /**
- * Create a new character.
+ * Start a new character.
  */
 function createNewCharacter() {
   const characters = getSavedCharacters();
@@ -334,7 +338,10 @@ function createNewCharacter() {
 }
 
 /**
- * Create one saved-character card.
+ * Build one saved-character card.
+ *
+ * We use createElement and textContent here instead of inserting
+ * user-entered character names with innerHTML.
  */
 function createSavedCharacterCard(character) {
   const system = systems.find((item) => item.id === character.systemId);
@@ -347,22 +354,26 @@ function createSavedCharacterCard(character) {
   const title = document.createElement("h3");
 
   title.className = "text-xl font-bold text-purple-600 dark:text-purple-400";
+
   title.textContent = character.name || "Unnamed Character";
 
   const systemName = document.createElement("p");
 
   systemName.className =
     "mt-2 text-sm font-semibold text-slate-700 dark:text-slate-300";
+
   systemName.textContent = system?.name ?? "Unknown System";
 
   const ancestryText = document.createElement("p");
 
   ancestryText.className = "mt-1 text-sm text-slate-500 dark:text-slate-400";
+
   ancestryText.textContent = character.ancestry || "No ancestry selected";
 
   const classText = document.createElement("p");
 
   classText.className = "mt-1 text-sm text-slate-500 dark:text-slate-400";
+
   classText.textContent = character.characterClass || "No class selected";
 
   const actions = document.createElement("div");
@@ -404,7 +415,7 @@ function createSavedCharacterCard(character) {
 }
 
 /**
- * Display all saved characters.
+ * Display saved characters.
  */
 function displaySavedCharacters() {
   const characters = getSavedCharacters();
@@ -419,6 +430,7 @@ function displaySavedCharacters() {
     const message = document.createElement("p");
 
     message.className = "text-slate-500 dark:text-slate-400";
+
     message.textContent = "You haven't saved any characters yet.";
 
     savedCharacters.appendChild(message);
@@ -427,7 +439,9 @@ function displaySavedCharacters() {
   }
 
   characters.forEach((character) => {
-    savedCharacters.appendChild(createSavedCharacterCard(character));
+    const card = createSavedCharacterCard(character);
+
+    savedCharacters.appendChild(card);
   });
 }
 
@@ -452,7 +466,7 @@ async function rollDice(formula) {
 }
 
 /**
- * Find the highest character attribute.
+ * Find the highest attribute in the scores object.
  */
 function getHighestAttribute(scores) {
   return Object.entries(scores).reduce((highest, current) =>
@@ -461,7 +475,7 @@ function getHighestAttribute(scores) {
 }
 
 /**
- * Display the current Vault suggestion.
+ * Display the current Vault class or hero-style suggestion.
  */
 function displaySuggestion(system) {
   if (!currentSuggestion || !currentHighestAttribute) {
@@ -479,7 +493,8 @@ function displaySuggestion(system) {
 
   classSuggestion.textContent =
     `${suggestionType}: ${currentSuggestion}. ` +
-    `Your strongest attribute is ${attributeLabel} (${currentHighestScore}).`;
+    `Your strongest attribute is ${attributeLabel} ` +
+    `(${currentHighestScore}).`;
 
   useSuggestionButton.textContent = `Use ${currentSuggestion}`;
 
@@ -487,7 +502,8 @@ function displaySuggestion(system) {
 }
 
 /**
- * Suggest a class or hero style based on the highest attribute.
+ * Suggest a class or hero style based on the
+ * character's highest attribute.
  */
 function suggestClass(system, scores) {
   const [highestAttribute, highestScore] = getHighestAttribute(scores);
@@ -509,7 +525,7 @@ function suggestClass(system, scores) {
 }
 
 /**
- * Roll all attributes.
+ * Roll each character attribute.
  */
 async function rollAttributes(system) {
   currentScores = {};
@@ -519,7 +535,7 @@ async function rollAttributes(system) {
 
     currentScores[attribute.name] = result;
 
-    const output = document.querySelector(`#${attribute.name}`);
+    const output = qs(`#${attribute.name}`);
 
     if (output) {
       output.textContent = result;
@@ -532,7 +548,7 @@ async function rollAttributes(system) {
 }
 
 /**
- * Save a new character or update an existing one.
+ * Add or update one saved character.
  */
 function storeCharacter(character) {
   const characters = getSavedCharacters();
@@ -557,7 +573,7 @@ function storeCharacter(character) {
 }
 
 /**
- * Save the character currently in the editor.
+ * Validate and save the currently displayed character.
  */
 function saveCurrentCharacter() {
   const system = getSelectedSystem();
@@ -579,20 +595,23 @@ function saveCurrentCharacter() {
 
   if (!ancestry.value) {
     showMessage(`Please choose a ${system.ancestryLabel.toLowerCase()}.`);
+
     ancestry.focus();
     return;
   }
 
   if (!characterClass.value) {
-    showMessage(
-      `Please choose a ${(system.classLabel ?? "class").toLowerCase()}.`,
-    );
+    const label = system.classLabel ?? "class";
+
+    showMessage(`Please choose a ${label.toLowerCase()}.`);
+
     characterClass.focus();
     return;
   }
 
   if (Object.keys(currentScores).length === 0) {
     showMessage("Please roll your character attributes before saving.");
+
     return;
   }
 
@@ -612,8 +631,10 @@ function saveCurrentCharacter() {
 
   if (!saved) {
     showMessage(
-      "You already have five saved characters. Delete one before creating another.",
+      "You already have five saved characters. " +
+        "Delete one before creating another.",
     );
+
     return;
   }
 
@@ -647,10 +668,15 @@ function openCharacter(id) {
   resetEditor();
 
   currentCharacterId = character.id;
-  currentScores = { ...character.scores };
+
+  currentScores = {
+    ...(character.scores ?? {}),
+  };
 
   currentSuggestion = character.suggestion ?? null;
+
   currentHighestAttribute = character.highestAttribute ?? null;
+
   currentHighestScore = character.highestScore ?? null;
 
   editorTitle.textContent = `Edit ${character.name}`;
@@ -664,10 +690,11 @@ function openCharacter(id) {
   displayAttributes(system);
 
   ancestry.value = character.ancestry;
+
   characterClass.value = character.characterClass;
 
   Object.entries(currentScores).forEach(([attribute, score]) => {
-    const output = document.querySelector(`#${attribute}`);
+    const output = qs(`#${attribute}`);
 
     if (output) {
       output.textContent = score;
@@ -714,7 +741,7 @@ function deleteCharacter(id) {
 }
 
 /**
- * Game system changed.
+ * Respond to a new game-system selection.
  */
 gameSystem.addEventListener("change", () => {
   const system = getSelectedSystem();
@@ -741,7 +768,7 @@ gameSystem.addEventListener("change", () => {
 });
 
 /**
- * Roll Attributes clicked.
+ * Roll character attributes.
  */
 rollAttributesButton.addEventListener("click", async () => {
   const system = getSelectedSystem();
@@ -755,6 +782,7 @@ rollAttributesButton.addEventListener("click", async () => {
 
   rollAttributesButton.disabled = true;
   rollAttributesButton.textContent = "Rolling...";
+
   rollAttributesButton.classList.add("dice-rolling");
 
   saveCharacterButton.disabled = true;
@@ -772,14 +800,14 @@ rollAttributesButton.addEventListener("click", async () => {
 });
 
 /**
- * Remove the dice animation.
+ * Remove dice animation class when complete.
  */
 rollAttributesButton.addEventListener("animationend", () => {
   rollAttributesButton.classList.remove("dice-rolling");
 });
 
 /**
- * Use the Vault's suggestion.
+ * Apply the Vault's suggested class or hero style.
  */
 useSuggestionButton.addEventListener("click", () => {
   if (!currentSuggestion) {
@@ -796,22 +824,23 @@ useSuggestionButton.addEventListener("click", () => {
 });
 
 /**
- * Create new character.
+ * Begin a new character.
  */
 newCharacterButton.addEventListener("click", createNewCharacter);
 
 /**
- * Close editor.
+ * Close the character editor.
  */
 closeEditorButton.addEventListener("click", closeEditor);
 
 /**
- * Save character.
+ * Save the current character.
  */
 saveCharacterButton.addEventListener("click", saveCurrentCharacter);
 
 /**
- * Handle Open and Delete buttons using event delegation.
+ * Handle Open and Delete buttons on saved
+ * character cards with event delegation.
  */
 savedCharacters.addEventListener("click", (event) => {
   const button = event.target.closest("button[data-character-id]");
@@ -821,6 +850,7 @@ savedCharacters.addEventListener("click", (event) => {
   }
 
   const id = Number(button.dataset.characterId);
+
   const action = button.dataset.action;
 
   if (action === "open") {
@@ -833,7 +863,7 @@ savedCharacters.addEventListener("click", (event) => {
 });
 
 /**
- * Initialize the page.
+ * Initialize Character Generator.
  */
 async function init() {
   try {
@@ -841,8 +871,6 @@ async function init() {
 
     displaySystems();
     displaySavedCharacters();
-
-    newCharacterButton.disabled = getSavedCharacters().length >= MAX_CHARACTERS;
   } catch {
     gameSystem.innerHTML = `
       <option value="">

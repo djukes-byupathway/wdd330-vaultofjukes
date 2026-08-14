@@ -1,9 +1,61 @@
 import "../css/style.css";
-import { loadHeaderFooter } from "./utils.mjs";
 
+import {
+  getLocalStorage,
+  loadHeaderFooter,
+  qs,
+  setLocalStorage,
+} from "./utils.mjs";
+
+const THEME_KEY = "theme";
+const DEFAULT_THEME = "dark";
+
+/**
+ * Apply the selected theme to the document.
+ */
+function applyTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+}
+
+/**
+ * Get the saved theme or use dark mode by default.
+ */
+function getSavedTheme() {
+  const theme = getLocalStorage(THEME_KEY, DEFAULT_THEME);
+
+  if (theme === "light" || theme === "dark") {
+    return theme;
+  }
+
+  return DEFAULT_THEME;
+}
+
+/**
+ * Set up the light/dark theme picker.
+ */
+function setupThemePicker(savedTheme) {
+  const themePicker = qs("#themePicker");
+
+  if (!themePicker) {
+    return;
+  }
+
+  themePicker.value = savedTheme;
+
+  themePicker.addEventListener("change", () => {
+    const selectedTheme = themePicker.value;
+
+    applyTheme(selectedTheme);
+    setLocalStorage(THEME_KEY, selectedTheme);
+  });
+}
+
+/**
+ * Set up the mobile navigation menu.
+ */
 function setupMobileMenu() {
-  const menuButton = document.querySelector("#menuButton");
-  const mobileMenu = document.querySelector("#mobileMenu");
+  const menuButton = qs("#menuButton");
+  const mobileMenu = qs("#mobileMenu");
 
   if (!menuButton || !mobileMenu) {
     return;
@@ -13,51 +65,43 @@ function setupMobileMenu() {
     const isOpen = menuButton.getAttribute("aria-expanded") === "true";
 
     menuButton.setAttribute("aria-expanded", String(!isOpen));
+
     mobileMenu.classList.toggle("hidden");
   });
 }
 
-async function init() {
-  const savedTheme = localStorage.getItem("theme") || "dark";
-
-  applyTheme(savedTheme);
-
-  await loadHeaderFooter();
-
-  setupMobileMenu();
-  setupFooter();
-  setupThemePicker();
-}
-
+/**
+ * Add the current year to the footer.
+ */
 function setupFooter() {
-  const copyrightYear = document.querySelector("#copyrightYear");
+  const copyrightYear = qs("#copyrightYear");
 
   if (copyrightYear) {
     copyrightYear.textContent = new Date().getFullYear();
   }
 }
 
-function applyTheme(theme) {
-  document.documentElement.dataset.theme = theme;
-}
+/**
+ * Initialize shared site features.
+ */
+async function init() {
+  const savedTheme = getSavedTheme();
 
-function setupThemePicker() {
-  const themePicker = document.querySelector("#themePicker");
+  /*
+   * Apply the theme before loading the header/footer
+   * so the page begins in the correct theme.
+   */
+  applyTheme(savedTheme);
 
-  if (!themePicker) {
-    return;
-  }
+  await loadHeaderFooter();
 
-  const savedTheme = localStorage.getItem("theme") || "dark";
-
-  themePicker.value = savedTheme;
-
-  themePicker.addEventListener("change", () => {
-    const selectedTheme = themePicker.value;
-
-    applyTheme(selectedTheme);
-    localStorage.setItem("theme", selectedTheme);
-  });
+  /*
+   * These elements are inside the loaded partials,
+   * so they must be set up after loadHeaderFooter().
+   */
+  setupMobileMenu();
+  setupFooter();
+  setupThemePicker(savedTheme);
 }
 
 init();
