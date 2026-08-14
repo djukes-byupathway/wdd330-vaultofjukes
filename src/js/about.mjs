@@ -33,7 +33,7 @@ function gameCardTemplate(game) {
         class="block"
       >
         <img
-          src="/assets/images/${game.imgurl}"
+          src="../assets/images/${game.imgurl}"
           alt="${game.name}"
           class="aspect-square w-full object-contain p-4"
         />
